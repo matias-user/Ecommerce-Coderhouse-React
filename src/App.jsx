@@ -1,7 +1,7 @@
 import './App.css';
 
-import NavBar from './components/NavBar';
-import ItemListContainerComponent from './components/ItemListContainer';
+import NavBar from './components/navbar/NavBar';
+import ItemListContainerComponent from './components/containerList/ItemListContainer';
 
 
 function App() {
@@ -10,26 +10,7 @@ function App() {
     <div className="App">
       <NavBar />
       <ItemListContainerComponent />
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
-      <h1>Hola</h1>
+      
     </div>
   )
 }

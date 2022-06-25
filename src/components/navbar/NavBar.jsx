@@ -1,4 +1,4 @@
-import CartWidget from "./CartWidget";
+import CartWidget from "../cart/CartWidget";
 
 function NavBar() {
     return (
@@ -7,9 +7,7 @@ function NavBar() {
             <h1 className="navbar-brand fs-4 fw-light" >
                 Store's Matías
             </h1>
-            <div className="d-flex gap-3" >
-                <CartWidget />
-            </div>
+            <CartWidget />
 
         </div>
     </nav>
