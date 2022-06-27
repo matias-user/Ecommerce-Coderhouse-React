@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function ItemCount({ stock, initial, onAdd }) {
+function ItemCounter({ stock, initial, onAdd }) {
     const [counter, setCounter] = useState(initial);
     const [counterStock, setCounterStock] = useState(stock);
     const [disabledPlus, setDisabledPlus] = useState(false);
@@ -34,10 +34,10 @@ function ItemCount({ stock, initial, onAdd }) {
     };
 
     return (
-        < div className="ItemCount" >
-            <div className="input-group mb-3">
+        < div>
+            <div className="input-group mb-1">
                 <button
-                    className="btn btn-outline-light"
+                    className="btn btn-outline-dark"
                     type="button"
                     id="btn-substraction"
                     disabled={disabledLess}
@@ -55,7 +55,7 @@ function ItemCount({ stock, initial, onAdd }) {
                 </input>
 
                 <button
-                    className="btn btn-outline-light"
+                    className="btn btn-outline-dark"
                     type="button"
                     id="btn-addition"
                     disabled={disabledPlus}
@@ -65,7 +65,7 @@ function ItemCount({ stock, initial, onAdd }) {
                 </button>
 
             </div>
-            <button className="btn btn-outline-light w-100"
+            <button className="btn btn-dark w-100 mb-5"
                 onClick={() => onAdd(counter)} >Add cart</button>
         </ div>
     )
@@ -74,4 +74,4 @@ function ItemCount({ stock, initial, onAdd }) {
 
 };
 
-export default ItemCount;
+export default ItemCounter;

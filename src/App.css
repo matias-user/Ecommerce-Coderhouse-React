@@ -1,5 +1,4 @@
 .App {
-  background-color: #282c34;
-  height: calc(100vh - 40px);
-
+  /* background-color: #282c34; */
+  font-family: 'Poppins', sans-serif;
 }

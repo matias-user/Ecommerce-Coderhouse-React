@@ -1,41 +1,59 @@
-import ItemCount from "../itemCount/ItemCount";
+import { useEffect, useState } from "react";
+import ItemCounter from "../itemCounter/ItemCounter";
+import { ItemList } from "../itemList/ItemList";
 
 
-function ItemListContainer(){
+function ItemListContainer() {
+    const [resultApi, setResultApi] = useState([]);
+    const [ isLoading, setIsLoading ] = useState(false);
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products')
+            .then(resp => resp.json())
+            .then(res => {
+                console.log(res);
+                setResultApi(res);
+                setIsLoading(true);
+            })
 
-    const onAdd = ( counter) =>{
+    }, []);
+    const onAdd = (counter) => {
 
         // Si el valor es 0 salir.
-        if( counter !== 0) {
+        if (counter !== 0) {
             alert(`El valor es: ${counter}`);
         }
-        
+
     };
 
     return (
-        <main className="text-white py-5 mt-5 mx-4 row" >
-            <div className="col-md-4">
-            <ItemCount 
-                initial={0} 
-                stock={20} 
-                onAdd={ onAdd }
-                 />
+        <main className="text-dark py-5 mt-5 mx-4 row" >
+            {
+                !isLoading && 
+                <div className="d-flex">
+                    <h1 className="m-auto">Loading Products...</h1>
 
-            </div>
-            <div className="col-md-4">
-            <ItemCount 
-                initial={0} 
-                stock={5}
-                onAdd={ onAdd } />
+                </div>
+            }
+            {
+               isLoading &&
+                resultApi.map(res => {
+                    return (
+                        <div className="col-md-4 my-2">
+                            <ItemList img={res.image}
+                                price={res.price}
+                                title={res.title}
+                                id={res.id}
+                                isLoading={isLoading} />
+                            <ItemCounter
+                                initial={0}
+                                stock={5}
+                                onAdd={onAdd}
+                            />
+                        </div>
+                    )
+                })
+            }
 
-            </div>
-            <div className="col-md-4">
-            <ItemCount 
-                initial={0} 
-                stock={ 3 }
-                onAdd={ onAdd } />
-
-            </div>
         </main>
     )
 }
