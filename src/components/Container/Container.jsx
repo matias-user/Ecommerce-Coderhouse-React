@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
-import ItemCounter from "../itemCounter/ItemCounter";
-import { ItemList } from "../itemList/ItemList";
+import ItemCounter from "../ItemCounter/ItemCounter";
+import { ItemList } from "../ItemList/ItemList";
 
 
-function ItemListContainer() {
+function Container() {
     const [resultApi, setResultApi] = useState([]);
-    const [ isLoading, setIsLoading ] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(true);
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(resp => resp.json())
             .then(res => {
-                console.log(res);
+
                 setResultApi(res);
-                setIsLoading(true);
+                setIsLoaded(false);
             })
 
     }, []);
+
+    // se recibe valor del boton add cart 
     const onAdd = (counter) => {
 
         // Si el valor es 0 salir.
@@ -28,14 +30,25 @@ function ItemListContainer() {
     return (
         <main className="text-dark py-5 mt-5 mx-4 row" >
             {
-                !isLoading && 
-                <div className="d-flex">
-                    <h1 className="m-auto">Loading Products...</h1>
+                isLoaded &&
+                <div className="d-flex flex-column">
+                    <p className="m-auto fs-2">Loading Products...</p>
+                    <div className="m-auto d-flex gap-2">
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
 
+                    </div>
                 </div>
             }
             {
-               isLoading &&
+                !isLoaded &&
                 resultApi.map(res => {
                     return (
                         <div className="col-md-4 my-2">
@@ -43,7 +56,7 @@ function ItemListContainer() {
                                 price={res.price}
                                 title={res.title}
                                 id={res.id}
-                                isLoading={isLoading} />
+                                isLoading={isLoaded} />
                             <ItemCounter
                                 initial={0}
                                 stock={5}
@@ -58,4 +71,4 @@ function ItemListContainer() {
     )
 }
 
-export default ItemListContainer;
+export default Container;

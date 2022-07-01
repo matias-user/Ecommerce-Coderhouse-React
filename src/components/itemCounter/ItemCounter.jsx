@@ -8,29 +8,28 @@ function ItemCounter({ stock, initial, onAdd }) {
     const [disabledLess, setdisabledLess] = useState(false);
 
     useEffect(() => {
-        //  Desbloquear el boton y set valor segun el caso.
-        if (counter > counterStock) {
+
+        //  Desbloquear el boton segun el caso.
+        if (counter >= counterStock) {
             setDisabledPlus(true);
-            setCounter((value) => value - 1);
-        } else if (counter < 0) {
+        } else if (counter <= 0) {
             setdisabledLess(true);
-            setCounter((value) => value + 1);
         }
-        if( counter < counterStock && counter > -1 ){
+        if( counter < counterStock && counter > 0 ){
             setDisabledPlus(false);
             setdisabledLess(false);
         }
     }
     )
 
-    const onChangeStock = (bool) => {
-        if (bool) {
+    const addStock = () => {
             
-            setCounter((value) => value + 1);
-        } else {
-            setCounter((value) => value - 1);
+        setCounter((value) => value + 1);
+        
+    };
+    const sustractStock = () => {
+        setCounter((value) => value - 1);
 
-        }
     };
 
     return (
@@ -41,7 +40,7 @@ function ItemCounter({ stock, initial, onAdd }) {
                     type="button"
                     id="btn-substraction"
                     disabled={disabledLess}
-                    onClick={() => onChangeStock(false)}
+                    onClick={() => sustractStock()}
                 >
                     -
                 </button>
@@ -59,7 +58,7 @@ function ItemCounter({ stock, initial, onAdd }) {
                     type="button"
                     id="btn-addition"
                     disabled={disabledPlus}
-                    onClick={() => onChangeStock(true)}
+                    onClick={() => addStock()}
                 >
                     +
                 </button>
