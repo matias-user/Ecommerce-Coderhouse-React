@@ -1,12 +1,8 @@
 import { Item } from "../Item/Item";
 
-export const ItemList = ({img, price, title, id}) => {
+export const ItemList = () => {
 
-    return  <Item image={img}
-                price={price}
-                title={title}
-                id={id}
-                />        
+    return  <Item />        
            
     
 };

@@ -1,0 +1,11 @@
+.mi-card{
+    max-height: 30rem !important;
+    height: 100%;
+    margin-bottom: .2rem;
+    
+}
+.img{
+    height: 16rem;
+    width: 100%;
+    object-fit: contain;
+}
