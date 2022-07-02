@@ -1,4 +1,25 @@
 .App {
-  /* background-color: #282c34; */
+  background-color: #f2f2f2;
   font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  height: 100%
+}
+
+.animation-item{
+  transform: scale(0.4) ;
+  animation: scale .4s ease-out forwards;
+}
+@keyframes scale {
+  to{
+      transform: scale(1);
+  }
+}
+.animation-brand{
+  transform: translate(70%);
+  animation: translate .5s forwards ease-in;
+}
+@keyframes translate {
+  to{
+    transform: translate(0%);
+  }
 }

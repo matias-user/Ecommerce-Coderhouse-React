@@ -1,17 +1,21 @@
 import './App.css';
 
-import NavBar from './shared/navbar/NavBar';
+import NavBar from './shared/NavBar/NavBar';
 import Container from './components/Container/Container';
+
 
 
 function App() {
 
   return (
-    <div className="App">
-      <NavBar />
-      <Container />
-      
-    </div>
+      <main className="App">
+        {/* <header> */}
+          <NavBar />
+
+        {/* </header> */}
+        <Container />
+      </main>
+    
   )
 }
 

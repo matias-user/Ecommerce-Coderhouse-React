@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function ItemCounter({ stock, initial, onAdd }) {
     const [counter, setCounter] = useState(initial);
-    const [counterStock, setCounterStock] = useState(stock);
+    const [counterStock] = useState(stock);
     const [disabledPlus, setDisabledPlus] = useState(false);
     const [disabledLess, setdisabledLess] = useState(true);
 
@@ -36,8 +36,8 @@ function ItemCounter({ stock, initial, onAdd }) {
     };
 
     return (
-        < div>
-            <div className="input-group mb-1">
+        < div className="animation-item" >
+            <div className="input-group mb-1 ">
                 <button
                     className="btn btn-outline-dark"
                     type="button"

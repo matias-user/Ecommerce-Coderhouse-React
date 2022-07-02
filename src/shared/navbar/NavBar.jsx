@@ -1,18 +1,44 @@
-import CartWidget from "../../components/cart/CartWidget";
+import { NavLink } from 'react-router-dom';
+
+import CartWidget from "../../components/Cart/CartWidget";
 
 function NavBar() {
     return (
-    <nav className="navbar navbar-dark bg-dark NavBar fixed-top" >
-        <div className="container-xl">
-            <h1 className="navbar-brand fs-2 fw-bold" >
-                Store's Matías
-            </h1>
-            <CartWidget />
+        <nav className="navbar navbar-dark bg-dark fixed-top" >
+            <div className="container-xl" role="section" >
+                <NavLink
+                            className='text-white text-decoration-none navbar-brand fs-4'
+                            to={'/'}
+                             >
+                            Store's Matías
+                    
+                            
+                        </NavLink>
+                <ul className='ms-auto d-flex flex-column flex-md-row me-5 gap-2 justify-content-center' >
+                    <li className='navbar-item' >
+                    <NavLink
+                            className='text-white text-decoration-none fs-4'
+                            to={`/itemList/${'jackets'}`}
+                            >
+                                Jackets
+                        </NavLink>
+                    </li>
+                    <li className='navbar-item' >
+                        <NavLink
+                            className='text-white text-decoration-none fs-4'
+                            to={`/itemList/${'rings'}`}
+                            >
+                                Rings
+                        </NavLink>
+                    </li>
+                </ul>
 
-        </div>
-    </nav>
-    ) 
-    
+                <CartWidget />
+
+            </div>
+        </nav>
+    )
+
 
 }
 

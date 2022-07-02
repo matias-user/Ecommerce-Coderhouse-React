@@ -1,22 +1,33 @@
+import './ItemDetail.css'
+import { useParams } from "react-router-dom"
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-export const ItemDetail = ({ image, price, title, id }) => {
+
+export const ItemDetail = () => {
+  const { id } = useParams();
+  const [resultItem, setResultItem] = useState({});
+
+  const getItem = () => {
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then(res => res.json())
+      .then(data => {
+
+        setResultItem(data);
+      });
+  };
+
+  useEffect(() => {
+    getItem();
+  }, [id]);
   return (
-    <div className="card mi-card border-dark">
-            
-    <img src={image} 
-        className="card-img-top img" />
-    <div className="card-body text-dark">
-        <div className="d-flex flex-column justify-content-between h-100">
-        <h3 className="card-title">{title}</h3>
-        <p className="card-subtitle fs-4" >
-           $ {price}
-        </p>
 
-        </div>
-    </div>
-    <div className="card-footer text-dark">
-        <p>ID: {id}</p>
-    </div>
-</div>
+    <article role='section' className='m-auto card-item' >
+      <img className='card-item__img' src={resultItem.image} alt={`product ${resultItem.name}`} />
+      <h1 className='fs-3 fw-bold card-item__title text-decoration-underline pt-5 text-center' >{resultItem.title}</h1>
+
+
+    </article>
+
   )
 }

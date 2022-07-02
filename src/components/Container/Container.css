@@ -1,0 +1,10 @@
+main .mt-5{
+    min-height: 100vh;
+    width: 95%;
+}
+@media ( min-width: 500px ) {
+    main .mt-5{
+        max-width: 800px;
+        
+    } 
+}

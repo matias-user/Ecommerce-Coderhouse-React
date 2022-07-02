@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 function CartWidget() {
-    const [cartTotal, setCartTotal] = useState(0);
+    const [cartTotal] = useState(0);
 
     return (
         <i className="bi bi-cart3 fs-5 btn-light px-2 rounded shadow-sm">
