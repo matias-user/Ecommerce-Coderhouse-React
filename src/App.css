@@ -1,12 +1,13 @@
 .App {
   background-color: #f2f2f2;
   font-family: 'Poppins', sans-serif;
+  width: 100%;
   min-height: 100vh;
   height: 100%
 }
 
 .animation-item{
-  transform: scale(0.4) ;
+  transform: scale(0.6) ;
   animation: scale .4s ease-out forwards;
 }
 @keyframes scale {

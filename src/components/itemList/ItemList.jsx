@@ -37,6 +37,7 @@ export const ItemList = () => {
     return (
         <>
             {
+                
                 !isLoaded &&
                 <Loader title="Loading Products..." />
 

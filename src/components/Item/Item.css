@@ -2,10 +2,10 @@
     max-height: 30rem !important;
     height: 100%;
     margin-bottom: .2rem;
-    
+    overflow: hidden;    
 }
 .img{
-    height: 16rem;
+    height: 15rem;
     width: 100%;
     object-fit: contain;
 }

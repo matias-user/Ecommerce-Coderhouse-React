@@ -1,33 +1,40 @@
+import { useEffect } from 'react'
+import { Loader } from '../../shared/Loader/Loader';
 import './ItemDetail.css'
-import { useParams } from "react-router-dom"
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 
-export const ItemDetail = () => {
-  const { id } = useParams();
-  const [resultItem, setResultItem] = useState({});
+export const ItemDetail = ({ detail, isLoaded }) => {
 
-  const getItem = () => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then(res => res.json())
-      .then(data => {
+  const { image, title, price, id, description, category } = detail;
+  useEffect(() => console.log(detail))
 
-        setResultItem(data);
-      });
-  };
-
-  useEffect(() => {
-    getItem();
-  }, [id]);
   return (
+    <>
 
-    <article role='section' className='m-auto card-item' >
-      <img className='card-item__img' src={resultItem.image} alt={`product ${resultItem.name}`} />
-      <h1 className='fs-3 fw-bold card-item__title text-decoration-underline pt-5 text-center' >{resultItem.title}</h1>
+      {
+        !isLoaded &&
+        <Loader />
+      }
+
+      {
+        isLoaded &&
+        <article role='section' 
+                  className='m-auto card-item animation-item rounded' >
+          <img className='card-item__img rounded ' 
+                src={image} />
+          <section className='card-item__texts d-flex flex-column' >
+            <h1 className='display-6 fw-bold card-item__title  pt-3' >{title}</h1>
+            <p>{description}</p>
+            <hr />
+            <p className='fs-1 fw-bold ms-auto' >{price}</p>
+          </section>
+        </article>
+      }
+    </>
 
 
-    </article>
+
+
 
   )
 }
