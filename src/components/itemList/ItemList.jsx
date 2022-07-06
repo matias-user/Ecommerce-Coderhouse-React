@@ -48,7 +48,7 @@ export const ItemList = () => {
                     return (
 
 
-                        <div className="col-md-4 my-2">
+                        <div className="col-md-3 my-2">
 
                             <Item image={res.image}
                                 price={res.price}
@@ -64,8 +64,6 @@ export const ItemList = () => {
                             />
 
                         </div>
-
-
                     )
                 })
 

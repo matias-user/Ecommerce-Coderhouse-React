@@ -1,34 +1,37 @@
+import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 
-import CartWidget from "../../components/Cart/CartWidget";
+import CartWidget from "../Cart/CartWidget";
 
 function NavBar() {
     return (
-        <nav className="navbar navbar-dark bg-dark fixed-top" >
-            <div className="container-xl" role="section" >
+        <nav className="navbar navbar-light bg-light fixed-top" >
+            <div className="container-xl " role="section" >
                 <NavLink
-                            className='text-white text-decoration-none navbar-brand fs-4'
-                            to={'/'}
-                             >
-                            Store's Matías
-                    
-                            
-                        </NavLink>
-                <ul className='ms-auto d-flex flex-column flex-md-row me-5 gap-2 justify-content-center' >
+                    className='text-white text-decoration-none navbar-brand fs-4'
+                    to={'/'}
+                >
+                    <img src="../../img/logo_1.png"
+                        alt="logo image"
+                        className='logo rounded shadow-sm' />
+
+
+                </NavLink>
+                <ul className='ms-sm-auto d-sm-flex flex-column flex-md-row me-sm-5 pe-1 gap-2' >
                     <li className='navbar-item' >
-                    <NavLink
-                            className='text-white text-decoration-none fs-4'
+                        <NavLink
+                            className='text-white text-decoration-none fs-4 animate-nav'
                             to={`/itemList/${'jackets'}`}
-                            >
-                                Jackets
+                        >
+                            Jackets
                         </NavLink>
                     </li>
                     <li className='navbar-item' >
                         <NavLink
-                            className='text-white text-decoration-none fs-4'
+                            className='text-white text-decoration-none fs-4 animate-nav'
                             to={`/itemList/${'rings'}`}
-                            >
-                                Rings
+                        >
+                            Rings
                         </NavLink>
                     </li>
                 </ul>

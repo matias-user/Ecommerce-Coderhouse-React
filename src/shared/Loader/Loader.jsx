@@ -1,8 +1,7 @@
 
 export const Loader = ({ title }) => {
     return (
-        // <div className="d-flex  gap-2 flex-column align-items-center">
-        <>
+        <span className="d-flex align-items-center flex-column" >
             <p className="fs-3" >{title}</p>
                 
                 <div className="d-flex gap-4" >
@@ -19,9 +18,7 @@ export const Loader = ({ title }) => {
                     </div>
                 </div>
         
-        </>
-        // </div>
-
+        </span>
         
     )
 }

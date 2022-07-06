@@ -1,0 +1,10 @@
+$oscuro: #261E1D;
+$primaryy: #8C706D;
+$primaryy-light: #A69897;
+$background: #D9D1D0;
+
+$primary: $primaryy;
+$secondary: $oscuro;
+$light: $primaryy-light;
+// Import bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';

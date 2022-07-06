@@ -24,9 +24,9 @@ export const ItemDetail = ({ detail, isLoaded }) => {
                 src={image} />
           <section className='card-item__texts d-flex flex-column' >
             <h1 className='display-6 fw-bold card-item__title  pt-3' >{title}</h1>
-            <p>{description}</p>
+            <p className='mt-auto' >{description}</p>
             <hr />
-            <p className='fs-1 fw-bold ms-auto' >{price}</p>
+            <p className='fs-1 fw-bold ms-auto mt-auto' >{price}</p>
           </section>
         </article>
       }

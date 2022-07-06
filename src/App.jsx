@@ -1,4 +1,4 @@
-import './App.css';
+import './Styles/App.scss';
 
 import NavBar from './shared/NavBar/NavBar';
 import Container from './components/Container/Container';

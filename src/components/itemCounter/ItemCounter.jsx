@@ -39,7 +39,7 @@ function ItemCounter({ stock, initial, onAdd }) {
         < div className="animation-item" >
             <div className="input-group mb-1 ">
                 <button
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-primary"
                     type="button"
                     id="btn-substraction"
                     disabled={disabledLess}
@@ -57,7 +57,7 @@ function ItemCounter({ stock, initial, onAdd }) {
                 </input>
 
                 <button
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-primary"
                     type="button"
                     id="btn-addition"
                     disabled={disabledPlus}
@@ -67,7 +67,7 @@ function ItemCounter({ stock, initial, onAdd }) {
                 </button>
 
             </div>
-            <button className="btn btn-dark w-100 mb-5"
+            <button className="btn btn-primary w-100 mb-5"
                 onClick={() => onAdd(counter)} >Add cart</button>
         </ div>
     )

@@ -1,0 +1,31 @@
+.animate-nav::after{
+    content: '';
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+    height: 5px;
+}
+.animate-nav:hover::after{
+    animation: animate .3s;
+    transform-origin: left;
+    background-color: #f2f2f2;
+}
+@keyframes animate {
+    from {
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.logo{
+    display: none;
+}
+@media (min-width: 420px ) {
+    .logo{
+        display: block;
+        height: 60px;
+        width: 180px;
+        object-fit: cover;
+    }   
+}

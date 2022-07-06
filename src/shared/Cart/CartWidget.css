@@ -1,0 +1,18 @@
+.cart{
+    position: relative;
+}
+.cart:hover{
+    transform: scaleY(1.1);
+    transform-origin: bottom center;
+    transition-duration: .2s;
+}
+.cart__circle{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+}

@@ -5,7 +5,7 @@ export const Item = ({ image, price, title, id }) => {
 
     return (
         <Link to={`/item/${id}`} className='text-decoration-none' >
-            <div className="card mi-card border-dark animation-item"  >
+            <div className="card mi-card border-primary animation-item"  >
 
                 <img src={image}
                     className="card-img-top img" />

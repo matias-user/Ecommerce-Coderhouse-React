@@ -8,7 +8,7 @@ import './Container.css';
 function Container() {
 
     return (
-        <main className='mt-5 pt-5 d-flex mx-auto flex-column align-items-center'  >
+        <main className='mt-5 pt-5 container-xl'  >
             <Routes>
                 <Route exact path='/' element={ <ItemList /> } ></Route>
                 <Route exact path='/item/:id' element={ < ItemDetailListContainer/> } ></Route>
