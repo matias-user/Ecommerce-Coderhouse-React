@@ -12,6 +12,7 @@ function Container() {
             <Routes>
                 <Route exact path='/' element={ <ItemList /> } ></Route>
                 <Route exact path='/item/:id' element={ < ItemDetailListContainer/> } ></Route>
+                <Route exact path='/:category' element={ < ItemList/> } ></Route>
             </Routes>
 
         </main>

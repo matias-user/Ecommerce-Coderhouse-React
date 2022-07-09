@@ -21,17 +21,17 @@ function NavBar() {
                     <li className='navbar-item' >
                         <NavLink
                             className='text-white text-decoration-none fs-4 animate-nav'
-                            to={`/itemList/${'jackets'}`}
+                            to={`/jewelery`}
                         >
-                            Jackets
+                            Jewelery
                         </NavLink>
                     </li>
                     <li className='navbar-item' >
                         <NavLink
                             className='text-white text-decoration-none fs-4 animate-nav'
-                            to={`/itemList/${'rings'}`}
+                            to={`/electronics`}
                         >
-                            Rings
+                            Electronics
                         </NavLink>
                     </li>
                 </ul>
