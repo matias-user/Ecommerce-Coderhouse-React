@@ -20,7 +20,7 @@ function NavBar() {
                 <ul className='ms-sm-auto d-sm-flex flex-column flex-md-row me-sm-5 pe-1 gap-2' >
                     <li className='navbar-item' >
                         <NavLink
-                            className='text-white text-decoration-none fs-4 animate-nav'
+                            className='text-white text-decoration-none fs-5 animate-nav'
                             to={`/jewelery`}
                         >
                             Jewelery
@@ -28,7 +28,7 @@ function NavBar() {
                     </li>
                     <li className='navbar-item' >
                         <NavLink
-                            className='text-white text-decoration-none fs-4 animate-nav'
+                            className='text-white text-decoration-none fs-5 animate-nav'
                             to={`/electronics`}
                         >
                             Electronics

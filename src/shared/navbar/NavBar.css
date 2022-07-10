@@ -1,9 +1,11 @@
+
 .animate-nav::after{
     content: '';
     display: block;
     width: 100%;
     margin-top: 2px;
     height: 5px;
+    transition: background-color .3s;
 }
 .animate-nav:hover::after{
     animation: animate .3s;

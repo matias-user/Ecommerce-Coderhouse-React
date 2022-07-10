@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ItemCounter from "../ItemCounter/ItemCounter";
 import { Loader } from '../../shared/Loader/Loader';
 import { Item } from "../Item/Item";
 import { useParams } from "react-router-dom";
@@ -68,13 +67,6 @@ export const ItemList = () => {
                                     id={res.id}
 
                                 />
-                                <ItemCounter
-                                    stock={res.count}
-                                    initial={0}
-                                    onAdd={onAdd}
-
-                                />
-
                             </div>
                         )
                     })

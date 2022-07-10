@@ -1,39 +1,27 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
-function ItemCounter({ stock, initial, onAdd }) {
-    const [counter, setCounter] = useState(initial);
-    const [counterStock] = useState(stock);
+function ItemCounter({ stock, count, onAdd }) {
     const [disabledPlus, setDisabledPlus] = useState(false);
-    const [disabledLess, setdisabledLess] = useState(true);
-
-    useEffect(() => {
-        
-        //  Desbloquear el boton segun el caso.
-        if (counter >= counterStock) {
+    const [disabledLess, setDisabledLess] = useState(true);
+    
+    const checkStock = () =>{
+        if( count <= 0 ){
+            setDisabledLess(true);
+        }else if( count > stock ) {
             setDisabledPlus(true);
-        } else if (counter < 0) {
-            setdisabledLess(true);
-            setCounter( counter => counter +1 )
-        }
-        if( counter < counterStock  ){
+        }else if( count > 0 && count <= stock ){
+            setDisabledLess(false);
             setDisabledPlus(false);
         }
-        if( counter > 0 ){
-            
-            setdisabledLess(false);
-        }
-    },[counter])
-
-    const addStock = () => {
-            
-        setCounter((counter) => counter + 1);
-        
     };
-    const sustractStock = () => {
-        setCounter((counter) => counter - 1);
 
-    };
+    useEffect(() => {
+        checkStock();
+        console.log(count);
+    }, [count])
+
 
     return (
         < div className="animation-item" >
@@ -43,7 +31,7 @@ function ItemCounter({ stock, initial, onAdd }) {
                     type="button"
                     id="btn-substraction"
                     disabled={disabledLess}
-                    onClick={() => sustractStock()}
+                    onClick={() => onAdd(false, count)}
                 >
                     -
                 </button>
@@ -51,7 +39,7 @@ function ItemCounter({ stock, initial, onAdd }) {
                 <input type="number"
                     className="form-control text-center"
                     aria-label="Example text with button addon"
-                    value={counter}
+                    value={count}
                 >
 
                 </input>
@@ -61,14 +49,17 @@ function ItemCounter({ stock, initial, onAdd }) {
                     type="button"
                     id="btn-addition"
                     disabled={disabledPlus}
-                    onClick={() => addStock()}
+                    onClick={() => onAdd(true,count)}
                 >
                     +
                 </button>
 
             </div>
-            <button className="btn btn-primary w-100 mb-5"
-                onClick={() => onAdd(counter)} >Add cart</button>
+            <NavLink to={'/cart'} >
+                <button className="btn btn-primary w-100 mb-5">
+                    Buy now
+                </button>
+            </NavLink>
         </ div>
     )
 

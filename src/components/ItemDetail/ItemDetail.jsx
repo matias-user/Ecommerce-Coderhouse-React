@@ -1,12 +1,20 @@
-import { useEffect } from 'react'
+import ItemCounter from '../ItemCounter/ItemCounter';
 import { Loader } from '../../shared/Loader/Loader';
-import './ItemDetail.css'
-
+import './ItemDetail.css';
+import { useState } from 'react';
 
 export const ItemDetail = ({ detail, isLoaded }) => {
 
-  const { image, title, price, id, description, category } = detail;
-  useEffect(() => console.log(detail))
+  const [ counter, setCounter ] = useState(0);
+  const { image, title, price, id, description, rating } = detail;
+
+  const onAdd = ( addOrSubstract,quantityToAdd )=> {
+    if( addOrSubstract ){
+      setCounter( count => count +1 );
+    }else{
+      setCounter( count => count -1 );
+    }
+  };
 
   return (
     <>
@@ -19,22 +27,19 @@ export const ItemDetail = ({ detail, isLoaded }) => {
       {
         isLoaded &&
         <article role='section' 
-                  className='m-auto card-item animation-item rounded' >
-          <img className='card-item__img rounded ' 
+                  className='card' >
+          <img className='card-img-top' 
                 src={image} />
-          <section className='card-item__texts d-flex flex-column' >
-            <h1 className='display-6 fw-bold card-item__title  pt-3' >{title}</h1>
-            <p className='mt-auto' >{description}</p>
-            <hr />
-            <p className='fs-1 fw-bold ms-auto mt-auto' >{price}</p>
+          <section className='card-body' >
+            <h1 className='card-title' >{title}</h1>
+            <p className='card-text' >{description}</p>
           </section>
+          <footer className='card-footer' >
+            <p className='fs-1 fw-bold' >$ {price}</p>
+            <ItemCounter stock={rating.count} onAdd={ onAdd } count={counter} />
+          </footer>
         </article>
       }
     </>
-
-
-
-
-
   )
 }

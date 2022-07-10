@@ -1,4 +1,5 @@
 import { Routes, Route  } from 'react-router-dom';
+import { CartContainer } from '../CartContainer/CartContainer';
 import { ItemDetailListContainer } from '../ItemDetailContainer/ItemDetailContainer';
 
 import { ItemList } from '../ItemList/ItemList';
@@ -13,6 +14,7 @@ function Container() {
                 <Route exact path='/' element={ <ItemList /> } ></Route>
                 <Route exact path='/item/:id' element={ < ItemDetailListContainer/> } ></Route>
                 <Route exact path='/:category' element={ < ItemList/> } ></Route>
+                <Route exact path='/cart' element={ < CartContainer/> } ></Route>
             </Routes>
 
         </main>
