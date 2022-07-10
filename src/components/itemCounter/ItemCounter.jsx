@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink } from 'react-router-dom';
 
-function ItemCounter({ stock, count, onAdd }) {
+function ItemCounter({ stock, count, changeCount, onAdd }) {
     const [disabledPlus, setDisabledPlus] = useState(false);
     const [disabledLess, setDisabledLess] = useState(true);
     
@@ -31,7 +31,7 @@ function ItemCounter({ stock, count, onAdd }) {
                     type="button"
                     id="btn-substraction"
                     disabled={disabledLess}
-                    onClick={() => onAdd(false, count)}
+                    onClick={() => changeCount(false)}
                 >
                     -
                 </button>
@@ -49,17 +49,21 @@ function ItemCounter({ stock, count, onAdd }) {
                     type="button"
                     id="btn-addition"
                     disabled={disabledPlus}
-                    onClick={() => onAdd(true,count)}
+                    onClick={() => changeCount(true)}
                 >
                     +
                 </button>
 
             </div>
-            <NavLink to={'/cart'} >
-                <button className="btn btn-primary w-100 mb-5">
-                    Buy now
+                <button 
+                    className="btn btn-primary w-100 mb-5"
+                    onClick={ () => onAdd(count) }>
+                    <NavLink
+                        className='text-white text-decoration-none' 
+                        to={'/cart'} >
+                            Buy now
+                    </NavLink>
                 </button>
-            </NavLink>
         </ div>
     )
 

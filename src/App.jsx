@@ -2,20 +2,21 @@ import './Styles/App.scss';
 
 import NavBar from './shared/NavBar/NavBar';
 import Container from './components/Container/Container';
+import { CartProvider } from './context/CartContext';
 
 
 
 function App() {
 
   return (
-      <main className="App">
-        {/* <header> */}
-          <NavBar />
+    <CartProvider>
 
-        {/* </header> */}
+      <main className="App">
+        <NavBar />
         <Container />
       </main>
-    
+    </CartProvider>
+
   )
 }
 
