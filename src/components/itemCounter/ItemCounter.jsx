@@ -19,12 +19,11 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
 
     useEffect(() => {
         checkStock();
-        console.log(count);
     }, [count])
 
 
     return (
-        < div className="animation-item" >
+        <div className="animation-item" >
             <div className="input-group mb-1 ">
                 <button
                     className="btn btn-outline-primary"
@@ -41,7 +40,6 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
                     aria-label="Example text with button addon"
                     value={count}
                 >
-
                 </input>
 
                 <button
@@ -66,9 +64,6 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
                 </button>
         </ div>
     )
-
-
-
 };
 
 export default ItemCounter;

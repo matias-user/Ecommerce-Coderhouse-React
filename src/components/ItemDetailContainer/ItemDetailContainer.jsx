@@ -12,7 +12,6 @@ export const ItemDetailListContainer = () => {
         fetch(`https://fakestoreapi.com/products/${id}`)
             .then(res => res.json())
             .then(data => {
-
                 setResultItem(data);
                 setIsLoaded(true);
             });

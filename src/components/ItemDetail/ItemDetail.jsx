@@ -27,12 +27,7 @@ export const ItemDetail = ({ detail, isLoaded }) => {
     <>
 
       {
-        !isLoaded &&
-        <Loader />
-      }
-
-      {
-        isLoaded &&
+        isLoaded ? 
         <article role='section' 
                   className='card' >
           <img 
@@ -40,16 +35,12 @@ export const ItemDetail = ({ detail, isLoaded }) => {
               src={image} />
           
           <section className='card-body' >
-          
             <h1 className='card-title' >{title}</h1>
             <p className='card-text' >{description}</p>
-          
           </section>
           
           <footer className='card-footer' >
-            
             <p className='fs-1 fw-bold' >$ {price}</p>
-
             <ItemCounter 
                     stock={rating.count} 
                     changeCount={ changeCount } 
@@ -58,7 +49,11 @@ export const ItemDetail = ({ detail, isLoaded }) => {
           </footer>
 
         </article>
+        :
+        <Loader />
       }
+
+     
     </>
   )
 }
