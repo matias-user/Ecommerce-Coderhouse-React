@@ -4,9 +4,14 @@ export const CartContext = createContext();
 const items = [];
 
 const checkDuplicate = ( { id } ) => {
-    items.forEach( item => {
-        if( item.id == id ) return;
-    } );
+    let help = true;
+    if( items.length > 0 ){        
+        items.forEach( item => {
+            if( item.item.id == id ) help = false;
+            
+        } );
+    }
+    return help;
 };
 
 export const CartProvider = ({ children }) => {
@@ -14,15 +19,17 @@ export const CartProvider = ({ children }) => {
     const [total, setTotal] = useState(0);
 
     const addItem = (item, quantity) => {
-        checkDuplicate( item );
-        items.push( {item, quantity} );
-        setItemInCart(items);
-        setTotal( total + Number(item.price)  );
+            if( quantity == 0 ) return;
+            if( checkDuplicate( item ) ){
+                items.push( {item, quantity} );
+                setItemInCart(items);
+                setTotal( total + (Number(item.price) * quantity ) );
+            }
     };
     const removeItemById = (id) => {
         const newItems = items.filter( val => val.item.id !== id );
         setItemInCart(newItems);
-    }
+    };
     
     const removeAll = () => {
         setItemInCart([]);

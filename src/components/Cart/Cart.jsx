@@ -16,11 +16,19 @@ export const Cart = () => {
                 itemsInCart.map(product => {
                   return (
                     <li className="list-group-item d-flex g-2 align-items-center justify-content-between" >
-                      <h2 className="fs-6 w-50" >{product.item.title}</h2>
+                      <div>
+                        <p>Product:</p>
+                        <h2 className="fs-6 w-50" >{product.item.title}</h2>
+
+                      </div>
                       <img
                         className="img-thumbnai image"
                         src={product.item.image}
                         alt={product.item.title} />
+                        <div>
+                          <p>Amount:</p>
+                          <h3>{product.quantity}</h3>
+                        </div>
                       <span  onClick={() => removeItemById(product.item.id)} >
                         <i
                           className="bi bi-x-circle text-danger"
