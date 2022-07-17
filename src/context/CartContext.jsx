@@ -10,15 +10,17 @@ const checkDuplicate = ( { id } ) => {
 };
 
 export const CartProvider = ({ children }) => {
-    const [itemInCart, setItemInCart] = useState([]);
+    const [itemsInCart, setItemInCart] = useState([]);
+    const [total, setTotal] = useState(0);
 
     const addItem = (item, quantity) => {
         checkDuplicate( item );
         items.push( {item, quantity} );
-        setItemInCart(items)
+        setItemInCart(items);
+        setTotal( total + Number(item.price)  );
     };
     const removeItemById = (id) => {
-        const newItems = items.filter( val => val.item.id == id );
+        const newItems = items.filter( val => val.item.id !== id );
         setItemInCart(newItems);
     }
     
@@ -29,11 +31,10 @@ export const CartProvider = ({ children }) => {
     const isInCart = ( id ) => {
         return items.find( item => item.id === id );
     };
-
     
       return (
       <CartContext.Provider 
-            value={{ itemInCart, addItem, removeItemById, removeAll, isInCart }} >
+            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total }} >
           { children }
       </CartContext.Provider>
     )

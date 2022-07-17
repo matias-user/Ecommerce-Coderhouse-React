@@ -11,7 +11,9 @@
   min-height: 100vh;
   height: 100%
 }
-
+.card{
+  max-width: 600px;
+}
 .animation-item{
   transform: scale(0.6) ;
   animation: scale .4s ease-out forwards;

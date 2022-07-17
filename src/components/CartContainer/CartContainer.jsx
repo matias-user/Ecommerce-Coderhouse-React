@@ -1,6 +1,10 @@
+import { Cart } from "../Cart/Cart"
 
 export const CartContainer = () => {
   return (
-    <div>CartContainer</div>
+    <section className="vh-100" >
+      <Cart />
+
+    </section>
   )
 }
