@@ -5,6 +5,7 @@ const items = [];
 
 const checkDuplicate = ( { id } ) => {
     let help = true;
+    // Si item no tiene producto no hacer este chequeo
     if( items.length > 0 ){        
         items.forEach( item => {
             if( item.item.id == id ) help = false;
@@ -29,6 +30,12 @@ export const CartProvider = ({ children }) => {
     const removeItemById = (id) => {
         const newItems = items.filter( val => val.item.id !== id );
         setItemInCart(newItems);
+        // quitar total del producto
+        items.forEach( product => {
+            if( product.item.id == id ){
+                setTotal( total - (product.item.price * product.quantity) );
+            }
+        } );
     };
     
     const removeAll = () => {

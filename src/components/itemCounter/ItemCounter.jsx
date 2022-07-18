@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { NavLink } from 'react-router-dom';
 
 function ItemCounter({ stock, count, changeCount, onAdd }) {
     const [disabledPlus, setDisabledPlus] = useState(false);
@@ -56,11 +55,7 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
                 <button 
                     className="btn btn-primary w-100 mb-5"
                     onClick={ () => onAdd(count) }>
-                    <NavLink
-                        className='text-white text-decoration-none' 
-                        to={'/cart'} >
-                            Buy now
-                    </NavLink>
+                        Add to cart
                 </button>
         </ div>
     )

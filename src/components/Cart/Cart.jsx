@@ -15,7 +15,7 @@ export const Cart = () => {
               {
                 itemsInCart.map(product => {
                   return (
-                    <li className="list-group-item d-flex g-2 align-items-center justify-content-between" >
+                    <li className="list-group-item d-flex g-2 align-items-center g-5" >
                       <div>
                         <p>Product:</p>
                         <h2 className="fs-6 w-50" >{product.item.title}</h2>
