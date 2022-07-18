@@ -2,26 +2,40 @@ import { useParams } from "react-router-dom"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { ItemDetail } from "../ItemDetail/ItemDetail";
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+
 
 export const ItemDetailListContainer = () => {
     const { id } = useParams();
-    const [resultItem, setResultItem] = useState({});
+    const [resultProduct, setResultProduct] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
 
     const getItem = () => {
-        fetch(`https://fakestoreapi.com/products/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setResultItem(data);
-                setIsLoaded(true);
-            });
+        const db = getFirestore();
+
+        const q = query( collection( db, 'products' ), where( 'id', '==', Number(id) ) );
+        getDocs(q).then( snapshot => {
+            if( snapshot.size == 0 ){
+                console.log('No results');
+            }
+            snapshot.docs.map( val => console.log( val.data() ) )
+            setResultProduct( snapshot.docs.map( doc => ({ id: doc.id, ...doc.data() }) ) )
+        } );
+
+        // fetch(`https://fakestoreapi.com/products/${id}`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setResultItem(data);
+        //         setIsLoaded(true);
+        //     });
     };
 
     useEffect(() => {
         getItem();
+        console.log(resultProduct);
     }, [id]);
     
     return (
-        <ItemDetail detail={ resultItem } isLoaded={ isLoaded } />    
+        <ItemDetail detail={ resultProduct } isLoaded={ isLoaded } />    
     )
 };

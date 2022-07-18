@@ -2,14 +2,27 @@ import { useState, useEffect } from "react";
 import { Loader } from '../../shared/Loader/Loader';
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { getFirestore, getDocs, collection } from 'firebase/firestore';
 
 
 export const ItemListContainer = () => {
     const [resultApi, setResultApi] = useState([]);
+    const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const { category } = useParams();
 
     const getItems = () => {
+        const db = getFirestore();
+
+        const productCollection = collection( db, 'products' );
+
+        getDocs( productCollection ).then( snapshot => {
+            if( snapshot.size === 0 ){
+                console.log('No results');
+            }
+            setProducts( snapshot.docs.map( doc => ( { id: doc.id, ...doc.data() } ) ) )
+        } );
+
         if (!category) {
 
             fetch('https://fakestoreapi.com/products')
@@ -31,6 +44,8 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         getItems();
+        console.log(products);
+
     }, [category]);
 
     return (

@@ -54,7 +54,8 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
             </div>
                 <button 
                     className="btn btn-primary w-100 mb-5"
-                    onClick={ () => onAdd(count) }>
+                    // onClick={ () => onAdd(count) }
+                    >
                         Add to cart
                 </button>
         </ div>
