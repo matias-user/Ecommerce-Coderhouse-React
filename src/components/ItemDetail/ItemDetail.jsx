@@ -11,16 +11,16 @@ export const ItemDetail = ({ detail, isLoaded }) => {
   const [ counter, setCounter ] = useState(0);
   const { addItem } = useContext(CartContext);
 
-  // const changeCount = ( addOrSubstract )=> {
-  //   if( addOrSubstract ){
-  //     setCounter( count => count +1 );
-  //   }else{
-  //     setCounter( count => count -1 );
-  //   }
-  // };
-  // const onAdd = (quantityToAdd)=>{
-  //   addItem( detail, quantityToAdd );
-  // };
+  const changeCount = ( addOrSubstract )=> {
+    if( addOrSubstract ){
+      setCounter( count => count +1 );
+    }else{
+      setCounter( count => count -1 );
+    }
+  };
+  const onAdd = (quantityToAdd)=>{
+    addItem( detail[0], quantityToAdd );
+  };
 
   
   return (
@@ -42,10 +42,10 @@ export const ItemDetail = ({ detail, isLoaded }) => {
           <footer className='card-footer' >
             <p className='fs-1 fw-bold' >$ {price}</p>
             <ItemCounter 
-                    // stock={count} 
-                    // changeCount={ changeCount } 
-                    // count={counter}
-                    // onAdd={ onAdd } 
+                    stock={count} 
+                    changeCount={ changeCount } 
+                    count={counter}
+                    onAdd={ onAdd } 
                     />
           </footer>
 

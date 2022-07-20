@@ -32,8 +32,8 @@ export const ItemDetailListContainer = () => {
     return (
         <>
             {
-                isLoaded &&
-            <ItemDetail detail={ resultProduct } isLoaded={ isLoaded } />    
+            isLoaded &&
+                <ItemDetail detail={ resultProduct } isLoaded={ isLoaded } />    
             } 
         </>
     )

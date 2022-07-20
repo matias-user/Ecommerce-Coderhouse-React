@@ -20,6 +20,7 @@ export const CartProvider = ({ children }) => {
     const [total, setTotal] = useState(0);
 
     const addItem = (item, quantity) => {
+            console.log(item, quantity);
             if( quantity == 0 ) return;
             if( checkDuplicate( item ) ){
                 items.push( {item, quantity} );
