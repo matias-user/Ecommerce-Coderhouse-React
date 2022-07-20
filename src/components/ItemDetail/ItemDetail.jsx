@@ -22,12 +22,12 @@ export const ItemDetail = ({ detail, isLoaded }) => {
   //   addItem( detail, quantityToAdd );
   // };
 
-
+  
   return (
     <>
 
       {
-        // isLoaded ? 
+        isLoaded ? 
         <article role='section' 
                   className='card' >
           <img 
@@ -50,8 +50,8 @@ export const ItemDetail = ({ detail, isLoaded }) => {
           </footer>
 
         </article>
-        // :
-        // <Loader />
+        :
+        <Loader />
       }
 
      
