@@ -15,12 +15,16 @@ export const Cart = () => {
               {
                 itemsInCart.map(product => {
                   return (
-                    <li className="list-group-item d-flex g-2 align-items-center g-5" >
+                    <>
+                    <li className="list-group-item " >
                       <div>
                         <p>Product:</p>
-                        <h2 className="fs-6 w-50" >{product.item.title}</h2>
+                        <h2 className="" >{product.item.title}</h2>
 
                       </div>
+                    </li>
+                    <li className="list-group-item d-flex gap-5 align-items-center" >
+
                       <img
                         className="img-thumbnai image"
                         src={product.item.image}
@@ -29,14 +33,13 @@ export const Cart = () => {
                           <p>Amount:</p>
                           <h3>{product.quantity}</h3>
                         </div>
-                      <span  onClick={() => removeItemById(product.item.id)} >
                         <i
-                          className="bi bi-x-circle text-danger"
+                          className="bi bi-x-circle text-danger "
+                          onClick={() => removeItemById(product.item.id)}
                           >
                         </i>
-
-                      </span>
                     </li>
+                    </>
                   )
                 })
               }
@@ -48,6 +51,10 @@ export const Cart = () => {
             <h3>
               Total: { total }
             </h3>
+            <button className="btn btn-dark" >
+              <i class="bi bi-bag me-2"></i>
+              Buy
+            </button>
         </div>
       </article>
 
