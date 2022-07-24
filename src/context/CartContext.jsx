@@ -22,7 +22,7 @@ const generateOrder = () => {
 
 export const CartProvider = ({ children }) => {
     const [itemsInCart, setItemInCart] = useState([]);
-    const [orders, setOrders] = useState([]);
+    const [order, setOrders] = useState('');
     const [user, setUser] = useState({});
     const [total, setTotal] = useState(0);
 
@@ -56,6 +56,8 @@ export const CartProvider = ({ children }) => {
     
     const removeAll = () => {
         setItemInCart([]);
+        setUser(null);
+        setTotal(0);
     };
     
     const isInCart = ( id ) => {
@@ -64,7 +66,7 @@ export const CartProvider = ({ children }) => {
     
       return (
       <CartContext.Provider 
-            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total, addUser, user, addOrder }} >
+            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total, addUser, user, addOrder, order }} >
           { children }
       </CartContext.Provider>
     )

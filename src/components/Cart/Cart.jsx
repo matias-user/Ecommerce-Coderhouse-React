@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import { CartContext } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Cart.css';
 import { Form } from "../../shared/Form/Form";
 import { Toast } from 'bootstrap';
 import { collection, getFirestore, addDoc } from 'firebase/firestore';
+
 
 const isNotEmpty = (user) => {
   const { name, phone, email } = user;
@@ -18,7 +19,8 @@ const isNotEmpty = (user) => {
 };
 
 export const Cart = () => {
-  const { itemsInCart, removeItemById, total, user } = useContext(CartContext);
+  const { itemsInCart, removeItemById, total, user, addOrder, removeAll } = useContext(CartContext);
+  let navigate = useNavigate();
   const db = getFirestore();
 
   const buyProducts = () => {
@@ -31,6 +33,9 @@ export const Cart = () => {
     };
     const ordersCollection = collection(db, "orders");
     addDoc( ordersCollection, order );
+    addOrder();
+    removeAll();
+    navigate('/order');
   };
 
   return (
@@ -41,15 +46,15 @@ export const Cart = () => {
       <article className="card m-auto mt-1" >
         {
           itemsInCart.length > 0 ?
-            <ul className="list-group list-group-flush" >
+            <ul  className="list-group list-group-flush" >
               {
-                itemsInCart.map((product,idx) => {
+                itemsInCart.map((product) => {
                   return (
                     <>
-                      <li key={idx} className="list-group-item " >
+                      <li className="list-group-item " >
                         <div>
                           <p>Product:</p>
-                          <h2 className="" >{product.item.title}</h2>
+                          <h2>{product.item.title}</h2>
 
                         </div>
                       </li>
