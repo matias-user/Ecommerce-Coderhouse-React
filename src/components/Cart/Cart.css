@@ -1,5 +1,8 @@
 .image{
-    width: 80px;
-    height: 80px;
+    width: 10rem;
+    height: 10rem;
     object-fit: contain;
+}
+i.bi-x-circle{
+    cursor: pointer;
 }

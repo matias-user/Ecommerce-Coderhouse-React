@@ -17,10 +17,16 @@ const checkDuplicate = ( { id } ) => {
 
 export const CartProvider = ({ children }) => {
     const [itemsInCart, setItemInCart] = useState([]);
+    const [user, setUser] = useState({});
     const [total, setTotal] = useState(0);
 
+
+    const addUser = ( name, phone, email ) => {
+        setUser({name, phone, email});
+    };
+
+
     const addItem = (item, quantity) => {
-            console.log(item, quantity);
             if( quantity == 0 ) return;
             if( checkDuplicate( item ) ){
                 items.push( {item, quantity} );
@@ -49,7 +55,7 @@ export const CartProvider = ({ children }) => {
     
       return (
       <CartContext.Provider 
-            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total }} >
+            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total, addUser, user }} >
           { children }
       </CartContext.Provider>
     )
