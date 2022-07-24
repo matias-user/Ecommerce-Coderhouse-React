@@ -3,16 +3,34 @@ import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import { Form } from "../../shared/Form/Form";
+import { Toast } from 'bootstrap';
+import { collection, getFirestore, addDoc } from 'firebase/firestore';
+
+const isNotEmpty = (user) => {
+  const { name, phone, email } = user;
+  if (name == '' || phone == '' || email == '') {
+    const toast = new Toast(document.getElementById('toast'));
+    toast.show();
+    return false;
+  }
+  return true;
+
+};
 
 export const Cart = () => {
   const { itemsInCart, removeItemById, total, user } = useContext(CartContext);
+  const db = getFirestore();
 
   const buyProducts = () => {
-    const { name, phone, email } = user;
-    if( name == '' || phone == '' || email == ''){
-      return;
-    }
-    console.log('Comprando');
+    if(  !isNotEmpty(user) ) return;
+    const order = {
+      buyer: user,
+      items: itemsInCart,
+      total,
+      date: new Date()
+    };
+    const ordersCollection = collection(db, "orders");
+    addDoc( ordersCollection, order );
   };
 
   return (
@@ -25,10 +43,10 @@ export const Cart = () => {
           itemsInCart.length > 0 ?
             <ul className="list-group list-group-flush" >
               {
-                itemsInCart.map(product => {
+                itemsInCart.map((product,idx) => {
                   return (
                     <>
-                      <li className="list-group-item " >
+                      <li key={idx} className="list-group-item " >
                         <div>
                           <p>Product:</p>
                           <h2 className="" >{product.item.title}</h2>
@@ -64,7 +82,7 @@ export const Cart = () => {
             Total: {total}
           </h3>
           <button
-            onClick={ buyProducts }
+            onClick={buyProducts}
             className="btn btn-secondary"
           >
             <i className="bi bi-bag me-2"></i>
@@ -77,7 +95,11 @@ export const Cart = () => {
         <button className="btn btn-secondary float-end mt-3" >Back to home</button>
       </Link>
 
-
+      <div className="toast position-fixed bottom-0 end-0" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div className="alert alert-danger" role="alert">
+          Please fill you contact information
+        </div>
+      </div>
     </section>
   )
 }

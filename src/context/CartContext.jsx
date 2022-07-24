@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 
 export const CartContext = createContext();
 const items = [];
+let counter = 0;
 
 const checkDuplicate = ( { id } ) => {
     let help = true;
@@ -14,12 +15,20 @@ const checkDuplicate = ( { id } ) => {
     }
     return help;
 };
+const generateOrder = () => {
+    counter++;
+    return `ABC${counter}`;
+};
 
 export const CartProvider = ({ children }) => {
     const [itemsInCart, setItemInCart] = useState([]);
+    const [orders, setOrders] = useState([]);
     const [user, setUser] = useState({});
     const [total, setTotal] = useState(0);
 
+    const addOrder = () => {
+        setOrders( generateOrder() );
+    };
 
     const addUser = ( name, phone, email ) => {
         setUser({name, phone, email});
@@ -55,7 +64,7 @@ export const CartProvider = ({ children }) => {
     
       return (
       <CartContext.Provider 
-            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total, addUser, user }} >
+            value={{ itemsInCart, addItem, removeItemById, removeAll, isInCart, total, addUser, user, addOrder }} >
           { children }
       </CartContext.Provider>
     )
