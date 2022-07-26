@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 
 export const CartContext = createContext();
-const items = [];
+let items = [];
 let counter = 0;
 
 const checkDuplicate = ( { id } ) => {
@@ -45,6 +45,7 @@ export const CartProvider = ({ children }) => {
     };
     const removeItemById = (id) => {
         const newItems = items.filter( val => val.item.id !== id );
+        items = newItems;
         setItemInCart(newItems);
         // quitar total del producto
         items.forEach( product => {
@@ -55,6 +56,7 @@ export const CartProvider = ({ children }) => {
     };
     
     const removeAll = () => {
+        items = [];
         setItemInCart([]);
         setUser(null);
         setTotal(0);

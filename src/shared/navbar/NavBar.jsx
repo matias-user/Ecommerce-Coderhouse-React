@@ -34,6 +34,22 @@ function NavBar() {
                             Electronics
                         </NavLink>
                     </li>
+                    <li className='navbar-item' >
+                        <NavLink
+                            className='text-white text-decoration-none fs-5 animate-nav'
+                            to={`/women's clothing`}
+                        >
+                            women's clothing
+                        </NavLink>
+                    </li>
+                    <li className='navbar-item' >
+                        <NavLink
+                            className='text-white text-decoration-none fs-5 animate-nav'
+                            to={`/men's clothing`}
+                        >
+                            men's clothing
+                        </NavLink>
+                    </li>
                 </ul>
 
                 <CartWidget />

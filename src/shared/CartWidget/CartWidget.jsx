@@ -16,22 +16,23 @@ function CartWidget() {
 
     return (
         <>
-            {
-                quantity !== 0 ?
-                    <Link to='/cart' >
-                        <i className="bi bi-cart3 fs-4 btn-light px-2 rounded shadow-sm cart me-1">
-                            <div role='section'
+
+            <Link to='/cart' >
+                <i className="bi bi-cart3 fs-4 btn-light px-2 rounded text-secondary shadow cart me-1 animation-item">
+                    {
+                        quantity !== 0 ?
+                            <div role='quantity cart'
                                 className='cart__circle d-inline shadow bg-secondary' >
                                 <p className="fs-5 text-white" >
                                     {quantity}
                                 </p>
 
                             </div>
-                        </i>
-                    </Link>
-                    :
-                    <span></span>
-            }
+                            :
+                            null
+                    }
+                </i>
+            </Link>
         </>
 
     )
