@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Cart.css';
 import { Form } from "../../shared/Form/Form";
 import { Toast } from 'bootstrap';
-import { collection, getFirestore, addDoc } from 'firebase/firestore';
+import { collection, getFirestore, addDoc, doc, getDocs, updateDoc, query, where } from 'firebase/firestore';
 
 
 const isNotEmpty = (user) => {
@@ -18,10 +18,30 @@ const isNotEmpty = (user) => {
 
 };
 
+
 export const Cart = () => {
   const { itemsInCart, removeItemById, total, user, addOrder, removeAll } = useContext(CartContext);
   let navigate = useNavigate();
   const db = getFirestore();
+
+  const updateStock = () => {
+
+    const productCollection = collection(db, "products");
+    
+    itemsInCart.map( prod => {
+      const q = query( productCollection, where( 'id', '==', prod.item.id) );
+      
+
+      getDocs( q ).then( data => {
+        data.forEach( product => {
+          const productDoc = doc( db, "products", product.id )
+          updateDoc( productDoc, { count: ( Number(product.data().count)  - Number(prod.quantity) ) } );
+        } );
+      })
+    } )
+    
+    
+  };
 
   const buyProducts = () => {
     if(  !isNotEmpty(user) ) return;
@@ -35,6 +55,7 @@ export const Cart = () => {
     addDoc( ordersCollection, order );
     addOrder();
     removeAll();
+    updateStock();
     navigate('/order');
   };
 
