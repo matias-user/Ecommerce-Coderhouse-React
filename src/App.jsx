@@ -11,10 +11,8 @@ function App() {
   return (
     <CartProvider>
 
-      <main className="App">
-        <NavBar />
-        <Container />
-      </main>
+      <NavBar />
+      <Container />
     </CartProvider>
 
   )

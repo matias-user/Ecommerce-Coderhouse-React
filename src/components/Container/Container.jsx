@@ -5,8 +5,6 @@ import { ItemDetailListContainer } from '../ItemDetailContainer/ItemDetailContai
 import { ItemListContainer } from '../ItemListContainer/ItemListContainer';
 import { Order } from '../Order/Order';
 
-import './Container.css';
-
 function Container() {
 
     return (

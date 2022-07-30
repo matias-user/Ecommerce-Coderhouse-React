@@ -1,24 +1,21 @@
 
-export const Loader = ({ title }) => {
+export const Loader = () => {
     return (
-        <span className="d-flex align-items-center flex-column" >
-            <p className="fs-3" >{title}</p>
-                
-                <div className="d-flex gap-4" >
+        <span className="d-flex align-items-center justify-content-center gap-3" >
 
-                    <div className="spinner-grow text-dark" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
 
-                    <div className="spinner-grow text-primary" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                    <div className="spinner-grow text-dark" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-        
+            <div className="spinner-grow text-dark" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+
+            <div className="spinner-grow text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+            <div className="spinner-grow text-dark" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+
         </span>
-        
+
     )
 }

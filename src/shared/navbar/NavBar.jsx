@@ -17,7 +17,7 @@ function NavBar() {
 
 
                 </NavLink>
-                <ul className='ms-sm-auto d-sm-flex flex-column flex-md-row me-sm-5 pe-1 gap-2' >
+                <ul className='ms-sm-auto d-sm-flex flex-column flex-md-row me-sm-5 pe-1 gap-4' >
                     <li className='navbar-item' >
                         <NavLink
                             className='text-white text-decoration-none fs-5 animate-nav'

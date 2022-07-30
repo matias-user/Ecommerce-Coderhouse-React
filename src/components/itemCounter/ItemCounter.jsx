@@ -31,7 +31,7 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
                     disabled={disabledLess}
                     onClick={() => changeCount(false)}
                 >
-                    -
+                   <strong>-</strong> 
                 </button>
 
                 <input type="number"
@@ -48,7 +48,7 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
                     disabled={disabledPlus}
                     onClick={() => changeCount(true)}
                 >
-                    +
+                   <strong>+</strong> 
                 </button>
 
             </div>
@@ -56,7 +56,7 @@ function ItemCounter({ stock, count, changeCount, onAdd }) {
                     className="btn btn-primary w-100 mb-5"
                     onClick={ () => onAdd(count) }
                     >
-                        Add to cart
+                    Add to cart
                 </button>
         </ div>
     )

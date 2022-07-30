@@ -25,12 +25,10 @@ export const Cart = () => {
   const db = getFirestore();
 
   const updateStock = () => {
-
     const productCollection = collection(db, "products");
     
     itemsInCart.map( prod => {
       const q = query( productCollection, where( 'id', '==', prod.item.id) );
-      
 
       getDocs( q ).then( data => {
         data.forEach( product => {
@@ -39,8 +37,6 @@ export const Cart = () => {
         } );
       })
     } )
-    
-    
   };
 
   const buyProducts = () => {
@@ -51,12 +47,18 @@ export const Cart = () => {
       total,
       date: new Date()
     };
-    const ordersCollection = collection(db, "orders");
-    addDoc( ordersCollection, order );
-    addOrder();
-    removeAll();
-    updateStock();
-    navigate('/order');
+
+    try {
+      const ordersCollection = collection(db, "orders");
+      addDoc( ordersCollection, order );
+      addOrder();
+      removeAll();
+      updateStock();
+      navigate('/order');
+        
+    } catch (error) {
+      console.log(error);      
+    }
   };
 
   return (

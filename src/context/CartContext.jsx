@@ -1,8 +1,10 @@
 import { createContext, useState } from 'react';
 
-export const CartContext = createContext();
 let items = [];
 let counter = 0;
+
+export const CartContext = createContext();
+
 
 const checkDuplicate = ( { id } ) => {
     let help = true;
@@ -44,15 +46,20 @@ export const CartProvider = ({ children }) => {
             }
     };
     const removeItemById = (id) => {
-        const newItems = items.filter( val => val.item.id !== id );
-        items = newItems;
-        setItemInCart(newItems);
-        // quitar total del producto
+        if( id ){
+        // Borrar total del producto
         items.forEach( product => {
             if( product.item.id == id ){
                 setTotal( total - (product.item.price * product.quantity) );
             }
         } );
+
+        const newItems = items.filter( val => val.item.id !== id );
+        items = newItems;
+        setItemInCart(newItems);
+
+        }
+        
     };
     
     const removeAll = () => {

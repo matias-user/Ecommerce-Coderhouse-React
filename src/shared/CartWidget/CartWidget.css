@@ -1,11 +1,7 @@
 .cart{
     position: relative;
 }
-.cart:hover{
-    transform: scaleY(1.1);
-    transform-origin: bottom center;
-    transition-duration: .2s;
-}
+
 .cart__circle{
     position: absolute;
     top: -15px;

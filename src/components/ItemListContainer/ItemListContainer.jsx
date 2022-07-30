@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { getFirestore, getDocs, collection, query, where } from 'firebase/firestore';
 
 
+
 export const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -61,7 +62,7 @@ export const ItemListContainer = () => {
                         }
                     </div>
                     :
-                    <Loader title="Loading Products..." />
+                    <Loader />
             }
         </>
     );

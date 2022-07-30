@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { Loader } from "../../shared/Loader/Loader";
 
 
 export const ItemDetailListContainer = () => {
@@ -32,8 +33,10 @@ export const ItemDetailListContainer = () => {
     return (
         <>
             {
-            isLoaded &&
+            isLoaded ?
                 <ItemDetail detail={ resultProduct } isLoaded={ isLoaded } />    
+            :
+            <Loader />
             } 
         </>
     )

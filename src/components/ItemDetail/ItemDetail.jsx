@@ -30,7 +30,6 @@ export const ItemDetail = ({ detail, isLoaded }) => {
 
   return (
     <>
-
       {
         isLoaded ?
           <section
@@ -61,10 +60,8 @@ export const ItemDetail = ({ detail, isLoaded }) => {
       <div className="toast-container position-fixed z-index-1031 top-0 end-0 p-3">
         <div id="liveToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
 
-          <div className="toast-body">
-            <div class="alert alert-success" role="alert">
-              A simple success alert—check it out!
-            </div>
+          <div className="alert alert-success h-100" role="alert">
+            <strong>Product add succesfully</strong> 
           </div>
         </div>
       </div>

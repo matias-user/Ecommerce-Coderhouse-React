@@ -1,9 +1,0 @@
-main .mt-5{
-    width: 95%;
-}
-@media ( min-width: 500px ) {
-    main .mt-5{
-        max-width: 1200px;
-        
-    } 
-}
