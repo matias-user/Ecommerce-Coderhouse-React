@@ -1,4 +1,7 @@
 
+.mi-fixed-top{
+    position: initial;
+}
 .animate-nav::after{
     content: '';
     display: block;
@@ -23,11 +26,21 @@
 .logo{
     display: none;
 }
-@media (min-width: 420px ) {
+@media (min-width: 460px ) {
     .logo{
         display: block;
         height: 60px;
         width: 180px;
         object-fit: cover;
     }   
+}
+@media (min-width: 680px){
+    .mi-fixed-top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: max-content;
+        z-index: 1000;
+    }
 }
