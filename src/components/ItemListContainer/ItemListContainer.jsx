@@ -53,6 +53,7 @@ export const ItemListContainer = () => {
                                         <ItemList image={res.image}
                                             price={res.price}
                                             title={res.title}
+                                            count={res.count}
                                             id={res.id}
                                             
                                         />
