@@ -103,9 +103,9 @@ export const Cart = () => {
               }
             </ul>
             :
-            <h3 className="text-primary p-5" >Cart empty</h3>
+            <h3 className="text-secondary p-5 fw-bold" >Cart empty</h3>
         }
-        <div className="card-footer d-flex justify-content-around">
+        <div className="card-footer d-flex justify-content-between">
           <h3>
             Total: {total}
           </h3>

@@ -13,7 +13,7 @@
 .animate-nav:hover::after{
     animation: animate .3s;
     transform-origin: left;
-    background-color: #f2f2f2;
+    background-color: #42594A;
 }
 @keyframes animate {
     from {

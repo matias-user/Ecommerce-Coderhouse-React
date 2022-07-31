@@ -5,32 +5,32 @@ export const ItemList = ({ image, price, title, count, id }) => {
 
     return (
         <Link to={`/item/${id}`} className='text-decoration-none' >
-            <div className="card mi-card border-primary animation-item"  >
+            <div className="card mi-card border-primary animation-item shadow-sm"  >
 
                 <img src={image}
                     className="card-img-top img" />
                 <div className="card-body text-dark d-grid">
-                    <h3 className="fs-5 mt-auto">{title}</h3>
+                    <h3 className="fs-5 mt-auto text-secondary">{title}</h3>
 
 
                 </div>
                 <div className="card-footer text-center d-flex align-items-center justify-content-between text-dark">
                     <span>
-                        <p>
+                        <h4 className='fw-light text-secondary' >
                             Price:
-                        </p>
-                        <p className="mt-auto" >
+                        </h4>
+                        <h4 className="text-secondary" >
                             <i className="bi bi-currency-dollar"></i> {price}
-                        </p>
+                        </h4>
                     </span>
 
                     <span>
-                        <p>
+                        <h4 className='fw-light text-secondary' >
                             Stock:
-                        </p>
-                        <p>
+                        </h4>
+                        <h4 className='text-secondary' >
                             {count}
-                        </p>
+                        </h4>
 
                     </span>
                 </div>

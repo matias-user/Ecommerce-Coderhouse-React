@@ -39,12 +39,12 @@ export const ItemDetail = ({ detail, isLoaded }) => {
               src={image} />
 
             <section className='card-body' >
-              <h1 className='card-title' >{title}</h1>
+              <h1 className='card-title text-secondary' >{title}</h1>
               {/* <p className='card-text' >{description}</p> */}
             </section>
 
             <footer className='card-footer' >
-              <p className='fs-1 fw-bold' >$ {price}</p>
+              <p className='fs-1 fw-bold text-secondary' >$ {price}</p>
               <ItemCounter
                 stock={count}
                 changeCount={changeCount}
