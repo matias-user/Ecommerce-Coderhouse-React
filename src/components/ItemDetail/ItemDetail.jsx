@@ -26,8 +26,6 @@ export const ItemDetail = ({ detail, isLoaded }) => {
     toast.show();
 
   };
-
-
   return (
     <>
       {
@@ -57,7 +55,7 @@ export const ItemDetail = ({ detail, isLoaded }) => {
           :
           <Loader />
       }
-      <div className="toast-container position-fixed z-index-1031 top-0 end-0 p-3">
+      <div className="toast-container position-fixed z-index-1031 top-0 end-0">
         <div id="liveToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
 
           <div className="alert alert-success h-100" role="alert">

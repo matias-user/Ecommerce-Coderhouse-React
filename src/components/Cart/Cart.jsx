@@ -26,21 +26,21 @@ export const Cart = () => {
 
   const updateStock = () => {
     const productCollection = collection(db, "products");
-    
-    itemsInCart.map( prod => {
-      const q = query( productCollection, where( 'id', '==', prod.item.id) );
 
-      getDocs( q ).then( data => {
-        data.forEach( product => {
-          const productDoc = doc( db, "products", product.id )
-          updateDoc( productDoc, { count: ( Number(product.data().count)  - Number(prod.quantity) ) } );
-        } );
+    itemsInCart.map(prod => {
+      const q = query(productCollection, where('id', '==', prod.item.id));
+
+      getDocs(q).then(data => {
+        data.forEach(product => {
+          const productDoc = doc(db, "products", product.id)
+          updateDoc(productDoc, { count: (Number(product.data().count) - Number(prod.quantity)) });
+        });
       })
-    } )
+    })
   };
 
   const buyProducts = () => {
-    if(  !isNotEmpty(user) ) return;
+    if (!isNotEmpty(user)) return;
     const order = {
       buyer: user,
       items: itemsInCart,
@@ -50,26 +50,32 @@ export const Cart = () => {
 
     try {
       const ordersCollection = collection(db, "orders");
-      addDoc( ordersCollection, order );
+      addDoc(ordersCollection, order);
       addOrder();
       removeAll();
       updateStock();
       navigate('/order');
-        
+
     } catch (error) {
-      console.log(error);      
+      console.log(error);
     }
   };
 
   return (
-    <section >
+    <section className="d-md-flex" >
       {
-        <Form />
+        <div>
+          <Form />
+          <Link to='/' >
+            <button className="btn btn-secondary mt-3" >Back to home</button>
+          </Link>
+        </div>
+
       }
       <article className="card m-auto mt-1" >
         {
           itemsInCart.length > 0 ?
-            <ul  className="list-group list-group-flush" >
+            <ul className="list-group list-group-flush" >
               {
                 itemsInCart.map((product) => {
                   return (
@@ -111,18 +117,13 @@ export const Cart = () => {
           </h3>
           <button
             onClick={buyProducts}
-            className="btn btn-secondary"
-          >
+            className="btn btn-secondary">
             <i className="bi bi-bag me-2"></i>
             Buy now
           </button>
         </div>
+
       </article>
-
-      <Link to='/' >
-        <button className="btn btn-secondary float-end mt-3" >Back to home</button>
-      </Link>
-
       <div className="toast position-fixed bottom-0 end-0" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div className="alert alert-danger" role="alert">
           Please fill you contact information

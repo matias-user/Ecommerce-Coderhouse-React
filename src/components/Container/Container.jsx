@@ -8,7 +8,7 @@ import { Order } from '../Order/Order';
 function Container() {
 
     return (
-        <main className='mt-5 pt-5 container-xl'  >
+        <main className='mt-5 pt-5 container-xl min-vh-100'  >
             <Routes>
                 <Route exact path='/' element={ <ItemListContainer /> } ></Route>
                 <Route exact path='/item/:id' element={ < ItemDetailListContainer/> } ></Route>
