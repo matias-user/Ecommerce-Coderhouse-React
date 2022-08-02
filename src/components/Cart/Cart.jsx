@@ -62,7 +62,7 @@ export const Cart = () => {
   };
 
   return (
-    <section className="d-md-flex" >
+    <section className="d-md-flex animation-item" >
       {
         <div>
           <Form />
@@ -72,14 +72,14 @@ export const Cart = () => {
         </div>
 
       }
-      <article className="card m-auto mt-1" >
+      <article className="card m-auto mt-1 animation-item" >
         {
           itemsInCart.length > 0 ?
             <ul className="list-group list-group-flush" >
               {
-                itemsInCart.map((product) => {
-                  return (
-                    <>
+                itemsInCart.map(product => 
+                  (
+                    <div key={ product.id } >
                       <li className="list-group-item " >
                         <div>
                           <p>Product:</p>
@@ -103,9 +103,9 @@ export const Cart = () => {
                         >
                         </i>
                       </li>
-                    </>
+                    </div>
                   )
-                })
+                )
               }
             </ul>
             :
@@ -124,10 +124,13 @@ export const Cart = () => {
         </div>
 
       </article>
-      <div className="toast position-fixed bottom-0 end-0" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div className="alert alert-danger" role="alert">
-          Please fill you contact information
-        </div>
+      <div className="toast bg-danger position-fixed z-index-1031 top-0 end-0" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div className="toast-body d-flex">
+            <h4 className="text-white fw-light" >
+              Please fill you contact information
+            </h4>
+            <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
       </div>
     </section>
   )

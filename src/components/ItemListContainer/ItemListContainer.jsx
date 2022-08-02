@@ -47,9 +47,9 @@ export const ItemListContainer = () => {
                 isLoaded ?
                     <div className="row">
                         {
-                            products.map((res,idx) => {
+                            products.map(res => {
                                 return (
-                                    <div className="col-md-3 my-2" key={idx} >
+                                    <div className="col-md-3 my-2" key={res.id} >
                                         <ItemList image={res.image}
                                             price={res.price}
                                             title={res.title}

@@ -9,7 +9,7 @@ export const Order = () => {
             <div className="card-body">
             <p>
                 Thanks for buy with us, your order is:
-                <b> {order}</b>
+                <b>{order}</b>
 
             </p>
 
