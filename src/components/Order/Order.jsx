@@ -8,7 +8,7 @@ export const Order = () => {
         <section className="card m-auto mt-5" >
             <div className="card-body">
             <p>
-                Thanks for buy with us, your order is:
+                Thanks for buy with us, your order is: 
                 <b>{order}</b>
 
             </p>
