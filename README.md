@@ -1,4 +1,4 @@
-# Ecommerce con React, Firebase para registrar lar ordenes de compra y hook context.
+# Ecommerce con React, Firebase para registrar lar ordenes de compra y context API.
 
 ## npm run dev para correr  app.
 ## configuración de firebase en /firebase.congif.js.
