@@ -18,7 +18,7 @@ function CartWidget() {
         <>
 
             <Link to='/cart' >
-                <i className="bi bi-cart3 fs-4 px-3 py-1  rounded text-secondary shadow cart me-1 animation-item">
+                <i className="bi bi-cart3 fs-4 px-3 py-1  rounded text-white shadow cart me-1 animation-item">
                     {
                         quantity !== 0 ?
                             <div role='quantity cart'
