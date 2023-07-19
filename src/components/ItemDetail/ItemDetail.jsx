@@ -9,7 +9,7 @@ import { Toast } from 'bootstrap';
 
 export const ItemDetail = ({ detail, isLoaded }) => {
 
-  const { image, title, price, count } = detail[0];
+  const { image, title, price, count = 1} = detail[0];
   const [counter, setCounter] = useState(0);
   const { addItem } = useContext(CartContext);
 
@@ -22,8 +22,10 @@ export const ItemDetail = ({ detail, isLoaded }) => {
   };
   const onAdd = (quantityToAdd) => {
     addItem(detail[0], quantityToAdd);
-    const toast = new Toast(document.getElementById('liveToast'));
-    toast.show();
+    if( quantityToAdd > 0  ){
+      const toast = new Toast(document.getElementById('liveToast'));
+      toast.show();
+    }
 
   };
   return (
